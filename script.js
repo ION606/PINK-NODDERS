@@ -73,10 +73,14 @@ function changeBK() {
     document.body.style.backgroundColor = backgroundColor;
 }
 
+let animIntId;
+let animIntTime = 2000;
+
+
 // Animate emotes every second
 document.addEventListener('DOMContentLoaded', () => {
     emotes.push(document.querySelector('.NOCLONE'));
-    setInterval(animateEmotes, 2000);
+    animIntId = setInterval(animateEmotes, animIntTime);
 
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
     let userInput = [];
@@ -115,6 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.style.zIndex = 0;
                 container.style.opacity = 0;
             }, 3000);
+        }
+        else if (event.ctrlKey && event.key === 'a') {
+            event.preventDefault();
+            clearInterval(animIntId);
+
+            animIntTime = (animIntTime <= 500) ? 2000 : animIntTime - 500;
+            console.debug(animIntTime);
+            
+            animIntId = setInterval(animateEmotes, animIntTime);
         }
     });
 });
