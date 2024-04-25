@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f3f3;
+    font-family: 'Arial', sans-serif;
+}
+
+.emote-container {
+    text-align: center;
+}
+
+
+.emote {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    transition: transform 1s ease, left 1s ease, top 1s ease;
+    cursor: pointer;
+}
+
+
+@keyframes colorShift {
+    0% { filter: hue-rotate(0deg); transform: rotate(0deg); }
+    50% { filter: hue-rotate(180deg); }
+    100% { filter: hue-rotate(360deg); transform: rotate(360deg);;}
+}
+
+.rotneon {
+    filter: brightness(150%) saturate(120%);
+    animation: colorShift 5s infinite;
+}
+
+.NOCLONE {
+    z-index: 300;
+}
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('cherry-blossom-bg.jpg'); /* Background image of cherry blossoms */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.theme-button {
+    display: block; /* Makes the button block to fill the width of the container */
+    margin: 10px auto; /* Automatically centers the button horizontally */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: pink;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    width: 90%;
+}
+
+h2 {
+    color: #333;
+}
+
+input[type="number"] {
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+}
+
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: -800% 50%; }
+}
+
+@keyframes rotateGradient {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(360deg) scale(3);
+    }
+}
+
+.neon-rainbow {
+    height: 200vh;
+    width: 200vw;
+    position: fixed;
+    z-index: -1;
+
+    background: linear-gradient(90deg, #ff0, #f0f, #00f, #0ff, #0f0, #ff0, #f00, #ff0, #ff0);
+    background-size: 800% 100%;
+
+    animation: moveGradient 15s linear infinite, rotateGradient 20s linear infinite;
+}
+
+
+#fullscreenTextContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    color: white;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    font-weight: bold;
+
+    text-shadow: 
+        0 0 5px #ff5ec9, /* Glowing effect */
+        0 0 10px #fc86ab, /* Glowing effect */
+        0 0 20px #ff5ec9, /* Glowing effect */
+        0 0 40px #fc86ab; /* Glowing effect */
+}
+
+.hidden {
+    opacity: 0;
+}
