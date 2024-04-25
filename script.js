@@ -24,6 +24,7 @@ function updatePosition(emote) {
 }
 
 // Create multiple emotes and make them bounce around
+if (Number(localStorage.getItem('alen')) > 10000) localStorage.setItem('alen', '20');
 const aLength = (localStorage.getItem('alen')) ? Number(localStorage.getItem('alen')) : 20;
 let emotes = Array.from({ length: aLength }, createEmote);
 
@@ -126,8 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             animIntTime = (animIntTime <= 500) ? 2000 : animIntTime - 500;
             console.debug(animIntTime);
-            
+
             animIntId = setInterval(animateEmotes, animIntTime);
+        }
+        else if (event.ctrlKey && event.key === 'l') {
+            event.preventDefault();
+            window.open("https://ion606.com", "_blank");
         }
     });
 });
